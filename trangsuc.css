@@ -1,6 +1,3 @@
-/* ==========================================
-   1. CẤU HÌNH NỀN TẢNG LUXURY
-   ========================================== */
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ==========================================
-   2. TOPBAR VÀ HEADER ĐỒNG BỘ
-   ========================================== */
+
 .topbar {
   background-color: #111111;
   color: #ffffff;
@@ -155,10 +150,77 @@ nav a.active {
   font-weight: 400;
 }
 
+/* Sửa lỗi hiển thị lưới sản phẩm */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 250px; /* Cố định chiều cao khung chứa ảnh */
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giữ nguyên tỉ lệ ảnh không bị méo, bóp */
+}
+
+.product-info-box {
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.product-info-box h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: #111;
+}
+
+.price-text {
+    color: #b81c1c; /* Màu đỏ cho giá tiền giống mẫu */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.buy-select-btn {
+    background: none;
+    border: 1px solid #b81c1c;
+    color: #b81c1c;
+    padding: 8px 0;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.buy-select-btn:hover {
+    background: #b81c1c;
+    color: #fff;
 }
 .product-card {
   display: flex;
