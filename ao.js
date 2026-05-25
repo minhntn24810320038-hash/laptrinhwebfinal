@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ==========================================
-  // 7. XỬ LÝ SỰ KIỆN TIẾN HÀNH THANH TOÁN
+  // 7. XỬ LÝ SỰ KIỆN TIẾN HÀNH THANH TOÁN (ĐÃ SỬA LỖI CHÍNH TẢ)
   // ==========================================
   function handleCheckoutRouting() {
     const checkoutBtn = document.getElementById("checkout-submit-btn");

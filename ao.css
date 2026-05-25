@@ -609,12 +609,15 @@ footer {
 @media (max-width: 768px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
   .modal-content {
     flex-direction: column;
     width: 95%;
     padding: 20px;
     gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
   }
   .modal-left img {
     height: 280px;
@@ -625,5 +628,9 @@ footer {
   }
   nav {
     display: none;
+  }
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
   }
 }
