@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán Thành Công - Gentleman Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="success.css" />
+  </head>
+  <body>
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+
+      <h1>Thanh Toán Thành Công</h1>
+      <p class="thankyou-text">
+        Cảm ơn quý ông đã tin tưởng lựa chọn sản phẩm của Gentleman Store.
+      </p>
+
+      <div class="order-meta">
+        <div>Mã đơn hàng: <strong id="order-id">#GTLM-94827</strong></div>
+        <div>Phương thức: <strong>COD (Thanh toán khi nhận hàng)</strong></div>
+      </div>
+
+      <h3 class="invoice-title">Chi tiết đơn hàng</h3>
+
+      <div class="product-list" id="invoice-items"></div>
+
+      <div class="summary-block">
+        <div class="summary-row">
+          <span>Tạm tính:</span>
+          <span id="subtotal-price">0đ</span>
+        </div>
+        <div class="summary-row">
+          <span>Phí vận chuyển:</span>
+          <span>Miễn phí</span>
+        </div>
+        <div class="summary-row total">
+          <span>TỔNG THANH TOÁN:</span>
+          <span id="final-price">0đ</span>
+        </div>
+      </div>
+
+      <a href="index.html" class="btn-home">Tiếp tục mua sắm</a>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tự sinh mã đơn ngẫu nhiên nhìn cho chuyên nghiệp
+        document.getElementById("order-id").innerText =
+          "#GTLM-" + Math.floor(100000 + Math.random() * 900000);
+
+        // Đọc dữ liệu giỏ hàng thực tế được chuyển từ trang chủ sang
+        const orderData =
+          JSON.parse(localStorage.getItem("gentleman_order_data")) || [];
+        const itemsContainer = document.getElementById("invoice-items");
+        let totalAmount = 0;
+
+        // Nếu giỏ có dữ liệu thực tế từ hệ thống, render đồ thực tế.
+        // Nếu trống (vào trực tiếp), tự hiển thị bộ đôi test giao diện chuẩn của bro.
+        if (orderData.length === 0) {
+          const defaultItems = [
+            {
+              name: "Kính Mát Phi Công Phiên Bản Limited",
+              size: "Freesize",
+              price: 650000,
+              quantity: 1,
+              image:
+                "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=150",
+            },
+            {
+              name: "Áo Sơ Mi Oxford Premium",
+              size: "L",
+              price: 350000,
+              quantity: 1,
+              image:
+                "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=150",
+            },
+          ];
+          renderItems(defaultItems);
+        } else {
+          renderItems(orderData);
+        }
+
+        function renderItems(items) {
+          itemsContainer.innerHTML = "";
+          items.forEach((item) => {
+            totalAmount += item.price * item.quantity;
+            itemsContainer.innerHTML += `
+              <div class="product-item">
+                <div class="prod-info">
+                  <img src="${item.image}" alt="${item.name}" class="prod-img">
+                  <div class="prod-details">
+                    <h4>${item.name}</h4>
+                    <p>Kích cỡ: ${item.size || "Freesize"} | Số lượng: ${item.quantity}</p>
+                  </div>
+                </div>
+                <div class="prod-price">${(item.price * item.quantity).toLocaleString("vi-VN")}đ</div>
+              </div>
+            `;
+          });
+
+          document.getElementById("subtotal-price").innerText =
+            totalAmount.toLocaleString("vi-VN") + "đ";
+          document.getElementById("final-price").innerText =
+            totalAmount.toLocaleString("vi-VN") + "đ";
+        }
+
+        // GIỮ LẠI LƯU TRỮ TRONG PHIÊN LÀM VIỆC - Chỉ xóa dữ liệu tạm khi quý ông nhấn nút "Tiếp tục mua sắm"
+        document
+          .querySelector(".btn-home")
+          .addEventListener("click", function () {
+            localStorage.removeItem("gentleman_order_data");
+          });
+      });
+    </script>
+  </body>
+</html>

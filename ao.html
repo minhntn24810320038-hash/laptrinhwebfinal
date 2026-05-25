@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gentleman Store - Áo Sơ Mi Cao Cấp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ao.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <span class="topbar-promo"
+        >🔥 HOTLINE CSKH: 1900.6789 • MIỄN PHÍ GIAO HÀNG TOÀN QUỐC</span
+      >
+      <div class="topbar-links">
+        <a href="auth.html">Đăng Nhập</a>
+        <span class="divider">|</span>
+        <a href="auth.html">Đăng Ký</a>
+      </div>
+    </div>
+
+    <header>
+      <div class="header-container">
+        <div class="logo">GENTLEMAN <span class="logo-sub">STORE</span></div>
+        <nav>
+          <a href="index.html">Trang Chủ</a>
+          <a href="ao.html" class="active">Áo Sơ Mi</a>
+          <a href="quan.html">Quần Âu</a>
+          <a href="trangsuc.html">Trang Sức</a>
+          <a href="tuvan.html">Tư Vấn Size</a>
+        </nav>
+        <div class="header-right">
+          <div
+            class="cart-icon"
+            id="open-cart-btn"
+            style="position: relative; cursor: pointer"
+          >
+            <span class="icon-bag" style="font-size: 22px">🛒</span>
+            <span class="cart-count" id="cart-counter">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="section-header">
+        <h3 class="cate-title">Bộ Sưu Tập Áo Sơ Mi</h3>
+        <p class="section-subtitle">
+          Chất liệu cao cấp - Thiết kế may đo hoàn hảo dành riêng cho quý ông
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <div
+          class="product-card trigger-modal"
+          data-id="A1"
+          data-name="Áo Sơ Mi Oxford Premium"
+          data-price="350000"
+          data-img="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500"
+          data-code="SM-001"
+        >
+          <div class="product-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500"
+              alt="Áo Sơ Mi Oxford Premium"
+            />
+          </div>
+          <div class="product-info-box">
+            <h3>Áo Sơ Mi Oxford Premium</h3>
+            <p class="price-text">350.000đ</p>
+            <button class="buy-select-btn">CHỌN MUA</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card trigger-modal"
+          data-id="A2"
+          data-name="Áo Sơ Mi Trắng Regular"
+          data-price="380000"
+          data-img="https://images.unsplash.com/photo-1620012253295-c05cc3e65843?w=500"
+          data-code="SM-002"
+        >
+          <div class="product-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1620012253295-c05cc3e65843?w=500"
+              alt="Áo Sơ Mi Trắng Regular"
+            />
+          </div>
+          <div class="product-info-box">
+            <h3>Áo Sơ Mi Trắng Regular</h3>
+            <p class="price-text">380.000đ</p>
+            <button class="buy-select-btn">CHỌN MUA</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="cart-sidebar-overlay" id="cartSidebarOverlay">
+      <div class="cart-sidebar">
+        <div class="cart-sidebar-header">
+          <h3>Giỏ Hàng Của Quý Ông</h3>
+          <button id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-sidebar-body" id="cart-items-container"></div>
+        <div class="cart-sidebar-footer">
+          <div class="total-price-row">
+            <span>TỔNG TIỀN:</span>
+            <span id="cart-total-amount">0đ</span>
+          </div>
+          <button class="checkout-btn" id="checkout-submit-btn">
+            TIẾN HÀNH THANH TOÁN
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="productPopupModal" class="product-modal">
+      <div class="modal-content">
+        <button id="closeModalBtn" class="close-modal-btn">&times;</button>
+        <div class="modal-left">
+          <img id="modal-product-img" src="" alt="Product Img" />
+        </div>
+        <div class="modal-right">
+          <h2 id="modal-product-name" class="p-name">Tên sản phẩm</h2>
+          <p class="p-code">Mã SP: <span id="modal-product-code">...</span></p>
+          <p id="modal-product-price" class="p-price">0đ</p>
+
+          <p class="option-label">Chọn Kích Cỡ:</p>
+          <div class="size-selector-group" id="size-container"></div>
+
+          <p class="option-label">Số Lượng:</p>
+          <div class="qty-counter-box">
+            <button id="q-minus">-</button>
+            <input id="q-val" value="1" readonly />
+            <button id="q-plus">+</button>
+          </div>
+
+          <div class="modal-action-btns">
+            <button id="add-to-cart-btn" class="btn-secondary">
+              THÊM VÀO GIỎ
+            </button>
+            <button id="buy-now-btn" class="btn-primary">MUA NGAY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-info">
+          <h3>Thông tin liên hệ</h3>
+          <p>
+            <strong>Địa chỉ:</strong> Tầng 8, Tòa nhà 311-313 Trường Chinh,
+            Phường Phương Liệt, Quận Thanh Xuân, Hà Nội
+          </p>
+          <p><strong>Điện thoại:</strong> 0964.942.121</p>
+          <p><strong>Hotline khiếu nại:</strong> 0904.636.356</p>
+          <p><strong>Email:</strong> cskh@gentleman.vn</p>
+        </div>
+
+        <div class="footer-shipping">
+          <h3>Đối tác vận chuyển</h3>
+          <div class="shipping-logos">
+            <div class="logo-item ghn">GHN</div>
+            <div class="logo-item ninja">NINJA</div>
+            <div class="logo-item ahamove">AHAMOVE</div>
+            <div class="logo-item jt">J&T EXPRESS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 GENTLEMAN STORE - ALL RIGHTS RESERVED. POWERED BY PREMIUM
+          QUALITY.
+        </p>
+      </div>
+    </footer>
+
+    <script src="ao.js"></script>
+  </body>
+</html>
